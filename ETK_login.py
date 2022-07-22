@@ -3,13 +3,21 @@ from tkinter import ttk
 from tkinter import messagebox
 import tkinter
 from turtle import width
-import _mysql_connector
 
 #ventana de ingreso
 w=Tk()
 w.geometry('550x675+0+0')
-w.title('Tu Cuenta MBX')
+w.title('Tu Cuenta ETL')
 w.resizable(0,0)
+w_Width = 550
+w_Height = 675
+
+#calcular la coordinación de la pantalla
+positionRight = int(w.winfo_screenwidth()/2 - w_Width/2 )
+positionDown = int(w.winfo_screenheight()/2 - w_Height/2 )
+
+#fijar la posición en el centro de la pantalla
+w.geometry("{}x{}+{}+{}".format(550,675,positionRight, positionDown))
 
 j=0
 r=0
@@ -23,7 +31,7 @@ for i in range(100):
 Frame(w,width=500, height=620,bg='white').place(x=25,y=25)
 
 #marca1
-l1=Label(w,text='MBX', bg='red')
+l1=Label(w,text='ETL', bg='red')
 l=('impact', 50) 
 l1.config(font=l)
 l1.place(x=225,y=70)
@@ -55,7 +63,7 @@ Frame(w,width=300,height=2,bg="#141414").place(x=100,y=340)
 
 #define el comando de acceso y los atributos del nombre de usuario y contraseña
 def cmd():
-    if e2.get()=='user@mbx.com' and e3.get()=='admin':
+    if e2.get()=='user@etl.com' and e3.get()=='admin':
         messagebox.showinfo("Ingreso Exitoso","   Bienvenido   ")
         q=Tk()
         q.mainloop()
@@ -63,6 +71,6 @@ def cmd():
         messagebox.showinfo("Ingreso Fallido","   Porfavor intente de nuevo   ")
 
 #boton de acceso
-Button(w,width=40,height=4,fg='black',bg='#ffffff',border=3,command=cmd,text="A C C E S O").place(x=135,y=450)
+Button(w,width=40,height=4,fg='black',bg='#ffffff',border=3,command=cmd,text="Ingresa").place(x=135,y=450)
 
 w.mainloop()
